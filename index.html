@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EGB Service - Contacto</title>
+  <style>
+    :root{
+      --accent: #0ea5a4; /* se actualizará con el color del logo si se puede extraer */
+      --accent-dark: #0b6b66;
+      --bg: #ffffff;
+      --card: #f8fafb;
+      --text: #0f172a;
+      --muted: #6b7280;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, Arial, Helvetica, sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .wrap{max-width:920px;margin:28px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center;padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(0,0,0,0.02),transparent);box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    .logo{width:88px;height:88px;flex-shrink:0;border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+    .logo img{width:100%;height:100%;object-fit:contain;display:block}
+    .title{display:flex;flex-direction:column}
+    .title h1{margin:0;font-size:20px;color:var(--text)}
+    .title p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+
+    main{margin-top:18px;display:grid;grid-template-columns:1fr 360px;gap:18px}
+    @media(max-width:880px){main{grid-template-columns:1fr}}
+
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 16px rgba(15,23,42,0.04)}
+    h2{margin:0 0 10px;font-size:18px;color:var(--text)}
+    .services ul{margin:0;padding-left:18px;color:var(--muted)}
+
+    .contact-info{display:flex;flex-direction:column;gap:8px}
+    .phone{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--accent-dark)}
+    .whatsapp-btn{display:inline-block;padding:10px 14px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
+
+    form label{display:block;font-size:13px;color:var(--muted);margin-top:10px}
+    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef2;margin-top:6px;font-size:14px}
+    form button{margin-top:12px;padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+
+    footer{margin-top:16px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* pequeño helper para mostrar colores extraídos (debug opcional) */
+    .swatches{display:flex;gap:8px;margin-top:12px}
+    .sw{width:28px;height:28px;border-radius:6px;border:1px solid rgba(0,0,0,0.06)}
+  /* Chips (preguntas rápidas) */
+  .chip-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chip{padding:8px 10px;border-radius:999px;background:#ffffff;border:1px solid #e6eef2;color:var(--text);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+  .chip:hover{filter:brightness(0.98)}
+  .chip.active{background:var(--accent);color:#ffffff;border-color:rgba(0,0,0,0.06);box-shadow:0 4px 12px rgba(14,165,164,0.12)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><img id="siteLogo" src="logo.jpg" alt="EGB Service - logo"/></div>
+      <div class="title">
+        <h1>EGB Service — Gustavo Brito</h1>
+        <p>Reparación de celulares · Venta de celulares, fundas, cargadores y accesorios</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card services">
+        <h2>Servicios</h2>
+        <ul>
+          <li>Reparación de pantalla, micrófono, altavoz y placas</li>
+          <li>Flasheo, recuperación de datos y diagnóstico</li>
+          <li>Venta de celulares nuevos y usados</li>
+          <li>Fundas, cargadores, protectores y accesorios</li>
+        </ul>
+
+        <div class="contact-info" style="margin-top:14px">
+          <div class="phone">📞 +54 9 266 525 2050</div>
+          <a id="waLinkTop" class="whatsapp-btn" href="https://wa.me/5492665252050" target="_blank">Enviar WhatsApp</a>
+        </div>
+
+        <div class="swatches" aria-hidden="true">
+          <div id="swAccent" class="sw" style="background:var(--accent)"></div>
+          <div id="swAccentDark" class="sw" style="background:var(--accent-dark)"></div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Contacto rápido</h2>
+        <form id="contactForm">
+          <label for="name">Tu nombre</label>
+          <input id="name" name="name" placeholder="Ej: Juan Pérez" />
+
+            <label for="phone">Tu teléfono (opcional)</label>
+            <input id="phone" name="phone" placeholder="Ej: 54911xxxxxxx" />
+
+            <label for="quick">Preguntas rápidas</label>
+            <div id="quickChips" class="chip-group" aria-label="Preguntas rápidas">
+              <button type="button" class="chip" data-text="¿Hacen envíos a mi zona? 📦">¿Hacen envíos? 📦</button>
+              <button type="button" class="chip" data-text="Precio de repuesto de pantalla 🛠️">Precio rep. pantalla 🛠️</button>
+              <button type="button" class="chip" data-text="¿Tienen fundas y protectores? 📱">Fundas/Protectores 📱</button>
+              <button type="button" class="chip" data-text="Disponibilidad de cargador 🔌">Cargador disponible 🔌</button>
+              <button type="button" class="chip" data-text="¿Ofrecen garantía? ✅">Garantía ✅</button>
+              <button type="button" class="chip" data-text="¿Cuánto demora la reparación? ⏱️">Tiempo estimado ⏱️</button>
+            </div>
+
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" placeholder="Detalle de la consulta o reparación"></textarea>
+
+            <button type="button" id="sendBtn">Abrir en WhatsApp</button>
+        </form>
+
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">Horario: Lunes a Sábado 9:30–19:00. Consultas por WhatsApp.</p>
+      </aside>
+    </main>
+
+    <footer>
+      EGB Service — Reparación en telefonía móvil · Gustavo Brito · Tel: +54 9 266 525 2050
+    </footer>
+  </div>
+
+  <script>
+    // Extrae color dominante del logo (si es posible) y lo aplica a variables CSS.
+    (function(){
+      const img = document.getElementById('siteLogo');
+      function rgbToHex(r,g,b){ return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+      function adjustColor([r,g,b], amount){ return [Math.max(0,Math.min(255,Math.round(r*amount))),Math.max(0,Math.min(255,Math.round(g*amount))),Math.max(0,Math.min(255,Math.round(b*amount)))]; }
+
+      function applyColors(r,g,b){
+        const root = document.documentElement.style;
+        const accent = rgbToHex(r,g,b);
+        const dark = rgbToHex(...adjustColor([r,g,b],0.7));
+        const bg = rgbToHex(...adjustColor([r,g,b],4.0));
+        root.setProperty('--accent', accent);
+        root.setProperty('--accent-dark', dark);
+        // keep bg and card readable; only set if contrast allows
+        try{ root.setProperty('--bg', '#ffffff'); root.setProperty('--card','#ffffff'); }catch(e){}
+        // actualizar botones/enlaces
+        const wa = document.querySelectorAll('.whatsapp-btn, form button, .phone');
+        wa.forEach(el=>{ if(el) el.style.background = accent; if(el && el.tagName==='A') el.style.color='#fff'; });
+        document.getElementById('swAccent').style.background = accent;
+        document.getElementById('swAccentDark').style.background = dark;
+      }
+
+      function extractAvgColor(image){
+        try{
+          const canvas = document.createElement('canvas');
+          const w = 64; const h = 64; canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(image,0,0,w,h);
+          const data = ctx.getImageData(0,0,w,h).data;
+          let r=0,g=0,b=0,count=0;
+          for(let i=0;i<data.length;i+=4){ const a=data[i+3]; if(a<125) continue; r+=data[i]; g+=data[i+1]; b+=data[i+2]; count++; }
+          if(count===0) return null; return [Math.round(r/count),Math.round(g/count),Math.round(b/count)];
+        }catch(e){ return null; }
+      }
+
+      function init(){
+        if(!img) return;
+        // si la imagen ya cargó
+        if(img.complete && img.naturalWidth!==0){ const c = extractAvgColor(img); if(c) applyColors(...c); return; }
+        // intentar cargar y extraer
+        img.crossOrigin = 'Anonymous';
+        img.addEventListener('load', ()=>{ const c=extractAvgColor(img); if(c) applyColors(...c); });
+        img.addEventListener('error', ()=>{/* ignorar y dejar colores por defecto */});
+      }
+      init();
+    })();
+
+    // Lógica del botón: abrir WhatsApp con mensaje construido
+    // Setup chips (preguntas rápidas)
+    function setupChips(){
+      const container = document.getElementById('quickChips');
+      if(!container) return;
+      container.querySelectorAll('.chip').forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          chip.classList.toggle('active');
+        });
+      });
+    }
+
+    document.getElementById('sendBtn').addEventListener('click', function(){
+      const name = document.getElementById('name').value.trim();
+      const phone = (document.getElementById('phone').value || '').replace(/\D/g,'');
+      const msg = document.getElementById('message').value.trim();
+
+      // recoger chips activos
+      const selected = Array.from(document.querySelectorAll('#quickChips .chip.active')).map(c=>c.getAttribute('data-text'));
+
+      let text = `Hola Gustavo, me contacto desde la web de EGB Service.`;
+      if(name) text += `\nNombre: ${name}`;
+      if(phone) text += `\nTel: ${phone}`;
+      if(selected.length){ text += `\n\nPreguntas rápidas: ${selected.join(' | ')}`; }
+      if(msg) text += `\n\nMensaje: ${msg}`;
+      const waNumber = '5492665252050';
+      const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+      window.open(url,'_blank');
+    });
+
+    // inicializar chips al cargar
+    setupChips();
+  </script>
+</body>
+</html>
