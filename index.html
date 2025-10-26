@@ -125,52 +125,8 @@
   </div>
 
   <script>
-    // Extrae color dominante del logo (si es posible) y lo aplica a variables CSS.
-    (function(){
-      const img = document.getElementById('siteLogo');
-      function rgbToHex(r,g,b){ return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
-      function adjustColor([r,g,b], amount){ return [Math.max(0,Math.min(255,Math.round(r*amount))),Math.max(0,Math.min(255,Math.round(g*amount))),Math.max(0,Math.min(255,Math.round(b*amount)))]; }
-
-      function applyColors(r,g,b){
-        const root = document.documentElement.style;
-        const accent = rgbToHex(r,g,b);
-        const dark = rgbToHex(...adjustColor([r,g,b],0.7));
-        const bg = rgbToHex(...adjustColor([r,g,b],4.0));
-        root.setProperty('--accent', accent);
-        root.setProperty('--accent-dark', dark);
-        // keep bg and card readable; only set if contrast allows
-        try{ root.setProperty('--bg', '#ffffff'); root.setProperty('--card','#ffffff'); }catch(e){}
-        // actualizar botones/enlaces
-        const wa = document.querySelectorAll('.whatsapp-btn, form button, .phone');
-        wa.forEach(el=>{ if(el) el.style.background = accent; if(el && el.tagName==='A') el.style.color='#fff'; });
-        document.getElementById('swAccent').style.background = accent;
-        document.getElementById('swAccentDark').style.background = dark;
-      }
-
-      function extractAvgColor(image){
-        try{
-          const canvas = document.createElement('canvas');
-          const w = 64; const h = 64; canvas.width = w; canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(image,0,0,w,h);
-          const data = ctx.getImageData(0,0,w,h).data;
-          let r=0,g=0,b=0,count=0;
-          for(let i=0;i<data.length;i+=4){ const a=data[i+3]; if(a<125) continue; r+=data[i]; g+=data[i+1]; b+=data[i+2]; count++; }
-          if(count===0) return null; return [Math.round(r/count),Math.round(g/count),Math.round(b/count)];
-        }catch(e){ return null; }
-      }
-
-      function init(){
-        if(!img) return;
-        // si la imagen ya cargó
-        if(img.complete && img.naturalWidth!==0){ const c = extractAvgColor(img); if(c) applyColors(...c); return; }
-        // intentar cargar y extraer
-        img.crossOrigin = 'Anonymous';
-        img.addEventListener('load', ()=>{ const c=extractAvgColor(img); if(c) applyColors(...c); });
-        img.addEventListener('error', ()=>{/* ignorar y dejar colores por defecto */});
-      }
-      init();
-    })();
+    // Se han eliminado las funciones de extracción de color para mantener consistencia
+    // Los colores ahora están definidos en las variables CSS (:root)
 
     // Lógica del botón: abrir WhatsApp con mensaje construido
     // Setup chips (preguntas rápidas)
