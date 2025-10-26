@@ -7,8 +7,8 @@
   <title>EGB Service - Contacto</title>
   <style>
     :root{
-      --accent: #0ea5a4; /* se actualizará con el color del logo si se puede extraer */
-      --accent-dark: #0b6b66;
+      --accent: #22c55e; /* verde fijo para botones */
+      --accent-dark: #15803d; /* verde oscuro para hover */
       --bg: #ffffff;
       --card: #f8fafb;
       --text: #0f172a;
@@ -44,11 +44,19 @@
     /* pequeño helper para mostrar colores extraídos (debug opcional) */
     .swatches{display:flex;gap:8px;margin-top:12px}
     .sw{width:28px;height:28px;border-radius:6px;border:1px solid rgba(0,0,0,0.06)}
-  /* Chips (preguntas rápidas) */
-  .chip-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-  .chip{padding:8px 10px;border-radius:999px;background:#ffffff;border:1px solid #e6eef2;color:var(--text);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-  .chip:hover{filter:brightness(0.98)}
-  .chip.active{background:var(--accent);color:#ffffff;border-color:rgba(0,0,0,0.06);box-shadow:0 4px 12px rgba(14,165,164,0.12)}
+    /* Chips (preguntas rápidas) */
+    .chip-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{padding:8px 10px;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;color:var(--text);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s ease}
+    .chip:hover{background:#e5e7eb;border-color:#d1d5db}
+    .chip.active{background:var(--accent);color:#ffffff !important;border-color:var(--accent);box-shadow:0 2px 8px rgba(34,197,94,0.2)}
+    
+    /* Ajustes para botones y enlaces */
+    .whatsapp-btn, form button{background:var(--accent) !important;color:#ffffff !important;transition:background 0.2s ease,transform 0.1s ease}
+    .whatsapp-btn:hover, form button:hover{background:var(--accent-dark) !important;transform:translateY(-1px)}
+    .whatsapp-btn:active, form button:active{transform:translateY(0)}
+    
+    /* Ajuste del teléfono */
+    .phone{color:var(--accent-dark) !important;font-weight:600}
   </style>
 </head>
 <body>
