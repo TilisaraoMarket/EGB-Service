@@ -63,6 +63,24 @@
     .download-app:active{
       transform:translateY(0);
     }
+    /* Botón para visitar la web pública */
+    .visit-site{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:16px;
+      margin-left:8px;
+      padding:10px 14px;
+      background:transparent;
+      border:1px solid var(--accent);
+      color:var(--accent-dark);
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      transition:all 0.16s ease;
+    }
+    .visit-site:hover{background:var(--accent);color:#fff;border-color:var(--accent-dark);transform:translateY(-1px)}
+    .visit-site:active{transform:translateY(0)}
     
     /* pequeño helper para mostrar colores extraídos (debug opcional) */
     .swatches{display:flex;gap:8px;margin-top:12px}
@@ -107,6 +125,7 @@
           <div class="phone">📞 +54 9 266 525 2050</div>
           <a id="waLinkTop" class="whatsapp-btn" href="https://wa.me/5492665252050" target="_blank">Enviar WhatsApp</a>
           <a href="https://www.mediafire.com/file/lqjt2b8qm658t5k/EGB_Service.apk/file" class="download-app" target="_blank">📱 Descargar App para Android</a>
+          <a href="https://tilisaraomarket.github.io/Web-EGB-Service/" class="visit-site" target="_blank" rel="noopener">🌐 Visitar la web</a>
         </div>
 
         <div class="swatches" aria-hidden="true">
@@ -140,7 +159,7 @@
             <button type="button" id="sendBtn">Abrir en WhatsApp</button>
         </form>
 
-        <p style="font-size:13px;color:var(--muted);margin-top:12px">Horario: Lunes a Sábado 9:30–19:00. Consultas por WhatsApp.</p>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">Horario: Lunes a Sábado 9:30–21:00. Consultas por WhatsApp.</p>
       </aside>
     </main>
 
